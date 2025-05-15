@@ -1,26 +1,138 @@
 @import "tailwindcss";
+@import "../styles/custom-theme.css";
 
 :root {
+  /* Primary Green Theme */
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #22c55e;
+  --primary-light: #4ade80;
+  --primary-dark: #16a34a;
+  --primary-bg: #f0fdf4;
+  --primary-border: #bbf7d0;
+
+  /* UI Colors */
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --input-border: #d1d5db;
+  --input-focus: #22c55e;
+  --button-primary: #16a34a;
+  --button-hover: #15803d;
+  --button-text: #ffffff;
+
+  /* Status Colors */
+  --success: #22c55e;
+  --warning: #eab308;
+  --error: #ef4444;
+  --info: #3b82f6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --primary: #22c55e;
+    --primary-light: #4ade80;
+    --primary-dark: #16a34a;
+    --primary-bg: #052e16;
+    --primary-border: #166534;
+    --card-bg: #1e293b;
+    --card-border: #334155;
+    --input-border: #475569;
+    --input-focus: #4ade80;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+}
+
+/* Custom button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--button-primary);
+  color: var(--button-text);
+}
+
+.btn-primary:hover {
+  background-color: var(--button-hover);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-dark);
+  border: 1px solid var(--primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-bg);
+}
+
+/* Card styles */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 0.5rem;
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--card-border);
+  background-color: var(--primary-bg);
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+/* Form styles */
+input, select, textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--input-border);
+  border-radius: 0.375rem;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+/* Progress bar */
+.progress {
+  width: 100%;
+  height: 0.5rem;
+  background-color: var(--primary-bg);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--primary);
+  border-radius: 9999px;
 }
